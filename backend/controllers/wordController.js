@@ -13,6 +13,13 @@ const __dirname = path.dirname(__filename);
 // Construct absolute path to the JSON data file
 const dataPath = path.join(__dirname, "../data/data.json");
 
+/*
+-------------------------------------
+This function gets words from the json
+file and sends it to routes
+--------------------------------------
+*/
+
 // GET /api/words → returns all words from data.json
 export async function getWords(req, res) {
   try {
@@ -30,7 +37,17 @@ export async function getWords(req, res) {
   }
 }
 
+/*
+-------------------------------------
+*/
 // POST /api/submit → placeholder handler for now
 export function addWord(req, res) {
   res.send("Hello");
 }
+
+
+/*
+-------------------------------------
+This function will collect words from the 
+--------------------------------------
+*/
