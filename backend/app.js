@@ -25,6 +25,11 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../client", "index.html"));
 });
 
+app.get("/submit", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client", "submit.html"));
+});
+
+
 // Start server
 app.listen(port, () => {
   console.log(`App running on port ${port}`);

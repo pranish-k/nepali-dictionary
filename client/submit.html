@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Word</title>
+  </head>
+  <body>
+    <form id="submit-form">
+      <h2>Add New Word</h2>
+
+      <label for="wordName">Word:</label><br />
+      <input type="text" id="wordName" name="wordName" required /><br /><br />
+
+      <label for="wordMeaning">Meaning:</label><br />
+      <textarea id="wordMeaning" name="wordMeaning" rows="3" required></textarea
+      ><br /><br />
+
+      <label for="wordSentence">Example Usage:</label><br />
+      <textarea id="wordSentence" name="wordSentence" rows="2"></textarea
+      ><br /><br />
+
+      <button type="submit">Add Word</button>
+    </form>
+    <script src="submit.js"></script>
+  </body>
+</html>

@@ -1,6 +1,7 @@
 // Import model and file system methods
 import Words from "../models/wordDefinition.js";
 import { readFile, writeFile } from "fs/promises";
+import { randomUUID } from "crypto";
 
 // For resolving absolute file paths in ES modules
 import path from "path";
@@ -27,27 +28,71 @@ export async function getWords(req, res) {
     const data = await readFile(dataPath, "utf-8");
 
     // Parse JSON string into JavaScript array
-    const allWords = data ? JSON.parse(data) : [];
+    let allWords;
+    try {
+      allWords = data ? JSON.parse(data) : [];
+      if (!Array.isArray(allWords)) throw new Error("Invalid data format");
+    } catch (parseError) {
+      console.error("JSON parse error:", parseError.message);
+      return res.status(500).json("Corrupted data format in file");
+    }
 
     // Send the data as JSON response
     res.json(allWords);
   } catch (error) {
-    console.error(error);
+    console.error("File read error:", error.message);
     res.status(500).json("Failed to load file");
   }
 }
 
 /*
 -------------------------------------
-*/
-// POST /api/submit → placeholder handler for now
-export function addWord(req, res) {
-  res.send("Hello");
-}
-
-
-/*
--------------------------------------
-This function will collect words from the 
+This function will collect words from the submittion and add it to JSON database 
 --------------------------------------
 */
+
+export async function addWord(req, res) {
+  try {
+    //read the file and load it into an array allWords
+    const data = await readFile(dataPath, "utf-8");
+    let allWords;
+    try {
+      allWords = data ? JSON.parse(data) : [];
+      if (!Array.isArray(allWords)) throw new Error("Invalid data format");
+    } catch (parseError) {
+      console.error("JSON parse error:", parseError.message);
+      return res.status(500).json("Corrupted data format in file");
+    }
+
+    //take the input from the forms and put them into the object
+    const { wordName, wordMeaning, wordSentence } = req.body;
+
+    // Check for missing fields
+    if (!wordName || !wordMeaning || !wordSentence) {
+      return res.status(400).json("Missing required fields");
+    }
+
+    const wordID = randomUUID(); // generates unique id
+    const dateCreated = new Date().toISOString().slice(0, 10);
+
+    const newWord = new Words(
+      wordID,
+      wordName,
+      wordMeaning,
+      wordSentence,
+      dateCreated
+    );
+
+    //push the new word into the array allWords
+    allWords.push(newWord.toJSON());
+
+    //write the new updated array back to file
+    await writeFile(dataPath, JSON.stringify(allWords, null, 2));
+
+    //send success response
+    res.status(201).json({ message: "Word added successfully", word: newWord });
+  } catch (error) {
+    console.error("Add word error:", error.message);
+    res.status(500).json("Failed to add word");
+  }
+}
