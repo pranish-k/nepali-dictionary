@@ -1,36 +1,37 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
-import router from "./routes/dictionaryRoutes.js"; // Add `.js` if using ES modules
+import router from "./routes/dictionaryRoutes.js";
+import { sequelize } from "./models/index.js";
 
-// Define Express app and port
-const app = express();
-const port = 3000;
-
-// Setup __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const app = express();
+const port = process.env.PORT || 3000;
 
-// Middleware to parse JSON in request bodies
 app.use(express.json());
-
-// Serve static files from the client folder
 app.use(express.static(path.join(__dirname, "../client")));
 
-// API routes (e.g. /api/words)
+// Mount API router
 app.use("/api", router);
 
-// Fallback to index.html for unknown routes
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client", "index.html"));
-});
+// Verify DB connection
+sequelize
+  .authenticate()
+  .then(() => console.log("Database connected"))
+  .catch((err) => console.error("DB connection error:", err));
 
-app.get("/submit", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client", "submit.html"));
-});
+// Sync models → tables in dev
+if (process.env.NODE_ENV !== "production") {
+  sequelize.sync();
+}
 
+// Serve front-end pages
+app.get("/", (req, res) =>
+  res.sendFile(path.join(__dirname, "../client/index.html"))
+);
+app.get("/submit", (req, res) =>
+  res.sendFile(path.join(__dirname, "../client/submit.html"))
+);
 
-// Start server
-app.listen(port, () => {
-  console.log(`App running on port ${port}`);
-});
+app.listen(port, () => console.log(`Listening on http://localhost:${port}`));

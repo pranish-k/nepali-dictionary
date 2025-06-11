@@ -1,98 +1,69 @@
-// Import model and file system methods
-import Words from "../models/wordDefinition.js";
-import { readFile, writeFile } from "fs/promises";
-import { randomUUID } from "crypto";
+import { Word } from "../models/index.js";
 
-// For resolving absolute file paths in ES modules
-import path from "path";
-import { fileURLToPath } from "url";
-
-// Get __dirname equivalent in ES module context
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Construct absolute path to the JSON data file
-const dataPath = path.join(__dirname, "../data/data.json");
-
-/*
--------------------------------------
-This function gets words from the json
-file and sends it to routes
---------------------------------------
-*/
-
-// GET /api/words → returns all words from data.json
 export async function getWords(req, res) {
   try {
-    // Read file as UTF-8 string
-    const data = await readFile(dataPath, "utf-8");
-
-    // Parse JSON string into JavaScript array
-    let allWords;
-    try {
-      allWords = data ? JSON.parse(data) : [];
-      if (!Array.isArray(allWords)) throw new Error("Invalid data format");
-    } catch (parseError) {
-      console.error("JSON parse error:", parseError.message);
-      return res.status(500).json("Corrupted data format in file");
-    }
-
-    // Send the data as JSON response
-    res.json(allWords);
-  } catch (error) {
-    console.error("File read error:", error.message);
-    res.status(500).json("Failed to load file");
+    const words = await Word.findAll();
+    res.json(words);
+  } catch (err) {
+    console.error("Fetch error:", err);
+    res.status(500).json({ message: "Failed to fetch words" });
   }
 }
 
-/*
--------------------------------------
-This function will collect words from the submittion and add it to JSON database 
---------------------------------------
-*/
+export async function getWordById(req, res) {
+  try {
+    const id = parseInt(req.params.id, 10);
+    const word = await Word.findOne({ where: { wordID: id } });
+    if (!word) return res.status(404).json({ message: "Word not found" });
+    res.json(word);
+  } catch (err) {
+    console.error("Fetch by ID error:", err);
+    res.status(500).json({ message: "Failed to fetch word" });
+  }
+}
 
 export async function addWord(req, res) {
   try {
-    //read the file and load it into an array allWords
-    const data = await readFile(dataPath, "utf-8");
-    let allWords;
-    try {
-      allWords = data ? JSON.parse(data) : [];
-      if (!Array.isArray(allWords)) throw new Error("Invalid data format");
-    } catch (parseError) {
-      console.error("JSON parse error:", parseError.message);
-      return res.status(500).json("Corrupted data format in file");
-    }
-
-    //take the input from the forms and put them into the object
-    const { wordName, wordMeaning, wordSentence } = req.body;
-
-    // Check for missing fields
-    if (!wordName || !wordMeaning || !wordSentence) {
-      return res.status(400).json("Missing required fields");
-    }
-
-    const wordID = randomUUID(); // generates unique id
-    const dateCreated = new Date().toISOString().slice(0, 10);
-
-    const newWord = new Words(
+    const { wordID, wordName, wordMeaning, wordSentence } = req.body;
+    const newWord = await Word.create({
       wordID,
       wordName,
       wordMeaning,
       wordSentence,
-      dateCreated
-    );
+      dateCreated: new Date(),
+    });
+    res.status(201).json(newWord);
+  } catch (err) {
+    console.error("Add error:", err);
+    res.status(500).json({ message: "Failed to add word" });
+  }
+}
 
-    //push the new word into the array allWords
-    allWords.push(newWord.toJSON());
+export async function updateWord(req, res) {
+  try {
+    const id = parseInt(req.params.id, 10);
+    const [updatedCount] = await Word.update(req.body, {
+      where: { wordID: id },
+    });
+    if (!updatedCount)
+      return res.status(404).json({ message: "Word not found" });
+    const updated = await Word.findOne({ where: { wordID: id } });
+    res.json(updated);
+  } catch (err) {
+    console.error("Update error:", err);
+    res.status(500).json({ message: "Failed to update word" });
+  }
+}
 
-    //write the new updated array back to file
-    await writeFile(dataPath, JSON.stringify(allWords, null, 2));
-
-    //send success response
-    res.status(201).json({ message: "Word added successfully", word: newWord });
-  } catch (error) {
-    console.error("Add word error:", error.message);
-    res.status(500).json("Failed to add word");
+export async function deleteWord(req, res) {
+  try {
+    const id = parseInt(req.params.id, 10);
+    const deletedCount = await Word.destroy({ where: { wordID: id } });
+    if (!deletedCount)
+      return res.status(404).json({ message: "Word not found" });
+    res.status(204).end();
+  } catch (err) {
+    console.error("Delete error:", err);
+    res.status(500).json({ message: "Failed to delete word" });
   }
 }
