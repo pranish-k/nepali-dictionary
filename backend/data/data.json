@@ -1,51 +1,702 @@
 [
   {
-    "wordID": "nep6",
     "wordName": "guff dinu",
     "wordMeaning": "to talk nonsense or boast",
     "wordSentence": "U ta jhan guff dine ma ta master ho.",
-    "dateCreated": "2025-06-04T19:45:00Z"
+    "status": "approved",
+    "dateCreated": "2024-01-15T10:30:00Z"
   },
   {
-    "wordID": "nep7",
     "wordName": "nakkali",
     "wordMeaning": "fake or pretentious person",
     "wordSentence": "Tyo manche ta ekdam nakkali ho yaar.",
-    "dateCreated": "2025-06-04T19:46:00Z"
+    "status": "approved",
+    "dateCreated": "2024-01-16T11:20:00Z"
   },
   {
-    "wordID": "nep8",
     "wordName": "jhyaap",
-    "wordMeaning": "completely drunk",
+    "wordMeaning": "completely drunk or wasted",
     "wordSentence": "Usle aadhi bottle pachi jhyaap bhayo.",
-    "dateCreated": "2025-06-04T19:47:00Z"
+    "status": "approved",
+    "dateCreated": "2024-01-17T14:45:00Z"
   },
   {
-    "wordID": "nep9",
     "wordName": "chikna",
-    "wordMeaning": "show-off / overly fashionable guy",
+    "wordMeaning": "show-off or overly fashionable guy",
     "wordSentence": "Waha ta ekdam chikna dress ma aayeko thiyo.",
-    "dateCreated": "2025-06-04T19:48:00Z"
+    "status": "approved",
+    "dateCreated": "2024-01-18T09:15:00Z"
   },
   {
-    "wordID": "nep10",
     "wordName": "taap lagyo",
-    "wordMeaning": "got a crush / infatuated",
+    "wordMeaning": "got a crush or became infatuated",
     "wordSentence": "Uslai herera taap lagyo jasto lagyo.",
-    "dateCreated": "2025-06-04T19:49:00Z"
+    "status": "approved",
+    "dateCreated": "2024-01-19T16:30:00Z"
   },
   {
-    "wordID": "nep11",
     "wordName": "chau chau",
-    "wordMeaning": "instant noodles (used generically, slang for quick snack)",
+    "wordMeaning": "instant noodles, used as slang for quick/cheap meal",
     "wordSentence": "College pachi chau chau khaera baseyeko.",
-    "dateCreated": "2025-06-04T19:50:00Z"
+    "status": "approved",
+    "dateCreated": "2024-01-20T12:00:00Z"
   },
   {
-    "wordID": "nep12",
     "wordName": "kaam napako",
-    "wordMeaning": "useless / incompetent person",
+    "wordMeaning": "useless or incompetent person",
     "wordSentence": "Tyo kaam napako le sab bigaryo.",
-    "dateCreated": "2025-06-04T19:51:00Z"
+    "status": "approved",
+    "dateCreated": "2024-01-21T13:25:00Z"
+  },
+  {
+    "wordName": "chakka jam",
+    "wordMeaning": "traffic blockade, also used for being stuck/blocked",
+    "wordSentence": "Aaja chakka jam bhayera 2 ghanta jam ma basnu paryo.",
+    "status": "approved",
+    "dateCreated": "2024-01-22T08:45:00Z"
+  },
+  {
+    "wordName": "khate",
+    "wordMeaning": "street smart person, hustler",
+    "wordSentence": "Yo manche ekdam khate ho, sab thaha huncha.",
+    "status": "approved",
+    "dateCreated": "2024-01-23T10:10:00Z"
+  },
+  {
+    "wordName": "dalle",
+    "wordMeaning": "gangster or rough person from the streets",
+    "wordSentence": "Tyo area ma dherai dalle haru chan.",
+    "status": "approved",
+    "dateCreated": "2024-01-24T15:20:00Z"
+  },
+  {
+    "wordName": "bhalu",
+    "wordMeaning": "someone who is heavy built or acts tough",
+    "wordSentence": "Tyo bhalu sanga jagada nagarnu.",
+    "status": "approved",
+    "dateCreated": "2024-01-25T11:35:00Z"
+  },
+  {
+    "wordName": "ghantaa",
+    "wordMeaning": "expression of disbelief or nothing (literally 'bell')",
+    "wordSentence": "Usle ghantaa gardaina, just guff hancha.",
+    "status": "approved",
+    "dateCreated": "2024-01-26T14:00:00Z"
+  },
+  {
+    "wordName": "dai ko bhai",
+    "wordMeaning": "someone who acts close to important people",
+    "wordSentence": "U ta dai ko bhai banera baseko cha.",
+    "status": "approved",
+    "dateCreated": "2024-01-27T09:50:00Z"
+  },
+  {
+    "wordName": "jhol",
+    "wordMeaning": "problem, mess or shady situation",
+    "wordSentence": "Yo project ma kei jhol cha ki kya ho.",
+    "status": "approved",
+    "dateCreated": "2024-01-28T16:15:00Z"
+  },
+  {
+    "wordName": "masta",
+    "wordMeaning": "awesome, cool or feeling great",
+    "wordSentence": "Aaja ko party ta ekdam masta thiyo.",
+    "status": "approved",
+    "dateCreated": "2024-01-29T12:40:00Z"
+  },
+  {
+    "wordName": "hawa",
+    "wordMeaning": "showing off or acting superior",
+    "wordSentence": "Tyo manche ta ekdam hawa hancha.",
+    "status": "approved",
+    "dateCreated": "2024-01-30T10:25:00Z"
+  },
+  {
+    "wordName": "thulo manche",
+    "wordMeaning": "big shot or important person",
+    "wordSentence": "Usle thulo manche ko contact cha bhanne guff hancha.",
+    "status": "approved",
+    "dateCreated": "2024-02-01T13:55:00Z"
+  },
+  {
+    "wordName": "chaak",
+    "wordMeaning": "butt, also used as an insult",
+    "wordSentence": "Tero chaak dubne ma, afno kaam gara.",
+    "status": "approved",
+    "dateCreated": "2024-02-02T11:10:00Z"
+  },
+  {
+    "wordName": "keta keti",
+    "wordMeaning": "boyfriend and girlfriend, couple",
+    "wordSentence": "Uni haru keta keti haru hun ki kya ho.",
+    "status": "approved",
+    "dateCreated": "2024-02-03T15:30:00Z"
+  },
+  {
+    "wordName": "paisa",
+    "wordMeaning": "money",
+    "wordSentence": "Yo mahina paisa sakine bho, loan chaiyo.",
+    "status": "approved",
+    "dateCreated": "2024-02-04T09:45:00Z"
+  },
+  {
+    "wordName": "lafanga",
+    "wordMeaning": "carefree troublemaker or playboy",
+    "wordSentence": "Tyo ta ekdam lafanga ho, kaam chaina.",
+    "status": "approved",
+    "dateCreated": "2024-02-05T14:20:00Z"
+  },
+  {
+    "wordName": "setting",
+    "wordMeaning": "making arrangements or fixing a romantic match",
+    "wordSentence": "Ma le timro lagi ramro keti setting gardine.",
+    "status": "approved",
+    "dateCreated": "2024-02-06T10:55:00Z"
+  },
+  {
+    "wordName": "tension",
+    "wordMeaning": "worry or stress",
+    "wordSentence": "Exam ko pailai dekhi tension lyako chu.",
+    "status": "approved",
+    "dateCreated": "2024-02-07T16:40:00Z"
+  },
+  {
+    "wordName": "bore",
+    "wordMeaning": "bored or boring",
+    "wordSentence": "Aaja ta ekdam bore lagdai cha yaar.",
+    "status": "approved",
+    "dateCreated": "2024-02-08T12:15:00Z"
+  },
+  {
+    "wordName": "chill",
+    "wordMeaning": "relax or hang out casually",
+    "wordSentence": "Aja ghar ma chill garera basau na.",
+    "status": "approved",
+    "dateCreated": "2024-02-09T13:30:00Z"
+  },
+  {
+    "wordName": "pakhe",
+    "wordMeaning": "someone from the hills, rustic person",
+    "wordSentence": "Tyo pakhe le city ko kei thaha chaina.",
+    "status": "approved",
+    "dateCreated": "2024-02-10T11:00:00Z"
+  },
+  {
+    "wordName": "madhise",
+    "wordMeaning": "person from Terai/plains of Nepal",
+    "wordSentence": "Madhise haru dherai ramro khana pakaucha.",
+    "status": "approved",
+    "dateCreated": "2024-02-11T15:45:00Z"
+  },
+  {
+    "wordName": "bidesi",
+    "wordMeaning": "foreigner or someone from abroad",
+    "wordSentence": "Tyo bidesi Nepali sikhdai cha.",
+    "status": "approved",
+    "dateCreated": "2024-02-12T09:20:00Z"
+  },
+  {
+    "wordName": "dhoti",
+    "wordMeaning": "derogatory term for Indian person",
+    "wordSentence": "Tyo dhoti serial dherai hercha.",
+    "status": "approved",
+    "dateCreated": "2024-02-13T14:10:00Z"
+  },
+  {
+    "wordName": "khukuri",
+    "wordMeaning": "traditional Nepali curved knife, symbol of bravery",
+    "wordSentence": "Dashain ma khukuri dekhauna pardaina.",
+    "status": "approved",
+    "dateCreated": "2024-02-14T10:35:00Z"
+  },
+  {
+    "wordName": "juju",
+    "wordMeaning": "respectful term for elder brother or senior",
+    "wordSentence": "Juju lai sodha na, unilai thaha huncha.",
+    "status": "approved",
+    "dateCreated": "2024-02-15T16:25:00Z"
+  },
+  {
+    "wordName": "bhai",
+    "wordMeaning": "brother, close friend",
+    "wordSentence": "Bhai, aaja party ma janu parcha.",
+    "status": "approved",
+    "dateCreated": "2024-02-16T12:50:00Z"
+  },
+  {
+    "wordName": "muji",
+    "wordMeaning": "vulgar insult (very offensive)",
+    "wordSentence": "Muji kya gardai chas yaar.",
+    "status": "approved",
+    "dateCreated": "2024-02-17T13:15:00Z"
+  },
+  {
+    "wordName": "lado",
+    "wordMeaning": "vulgar male anatomy reference, used as insult",
+    "wordSentence": "Lado jasto kura nagara yaar.",
+    "status": "approved",
+    "dateCreated": "2024-02-18T11:40:00Z"
+  },
+  {
+    "wordName": "puti",
+    "wordMeaning": "vulgar female anatomy reference, very offensive",
+    "wordSentence": "Tyo puti sanga kura nagarnu.",
+    "status": "approved",
+    "dateCreated": "2024-02-19T15:05:00Z"
+  },
+  {
+    "wordName": "machikne",
+    "wordMeaning": "extremely vulgar curse word",
+    "wordSentence": "Machikne kasto guff hancha.",
+    "status": "approved",
+    "dateCreated": "2024-02-20T09:55:00Z"
+  },
+  {
+    "wordName": "baula",
+    "wordMeaning": "crazy or mad person",
+    "wordSentence": "Tyo baula le k k gardai cha.",
+    "status": "approved",
+    "dateCreated": "2024-02-21T14:30:00Z"
+  },
+  {
+    "wordName": "saro",
+    "wordMeaning": "very much, a lot",
+    "wordSentence": "Malai saro man paryo tyo movie.",
+    "status": "approved",
+    "dateCreated": "2024-02-22T10:20:00Z"
+  },
+  {
+    "wordName": "khatey",
+    "wordMeaning": "short or small person",
+    "wordSentence": "Tyo khatey le basketball khelna sakdaina.",
+    "status": "approved",
+    "dateCreated": "2024-02-23T16:45:00Z"
+  },
+  {
+    "wordName": "gedi",
+    "wordMeaning": "a casual walk or drive around",
+    "wordSentence": "Sajha bike ma gedi hanau na.",
+    "status": "approved",
+    "dateCreated": "2024-02-24T12:10:00Z"
+  },
+  {
+    "wordName": "jhatka",
+    "wordMeaning": "shock or sudden surprise",
+    "wordSentence": "Exam result le jhatka lagyo yaar.",
+    "status": "approved",
+    "dateCreated": "2024-02-25T13:35:00Z"
+  },
+  {
+    "wordName": "chakari",
+    "wordMeaning": "buttering up someone, being a sycophant",
+    "wordSentence": "U teacher ko chakari matra garcha.",
+    "status": "approved",
+    "dateCreated": "2024-02-26T11:00:00Z"
+  },
+  {
+    "wordName": "kancha",
+    "wordMeaning": "youngest brother or junior person",
+    "wordSentence": "Kancha lai sab le maya garcha.",
+    "status": "approved",
+    "dateCreated": "2024-02-27T15:25:00Z"
+  },
+  {
+    "wordName": "daju",
+    "wordMeaning": "elder brother",
+    "wordSentence": "Daju le malai paisa diyeko cha.",
+    "status": "approved",
+    "dateCreated": "2024-02-28T09:50:00Z"
+  },
+  {
+    "wordName": "didi",
+    "wordMeaning": "elder sister",
+    "wordSentence": "Didi le momo lyaunu bhayo.",
+    "status": "approved",
+    "dateCreated": "2024-03-01T14:15:00Z"
+  },
+  {
+    "wordName": "bahini",
+    "wordMeaning": "younger sister",
+    "wordSentence": "Mero bahini college ma padhdai cha.",
+    "status": "approved",
+    "dateCreated": "2024-03-02T10:40:00Z"
+  },
+  {
+    "wordName": "sathi",
+    "wordMeaning": "friend or companion",
+    "wordSentence": "Tyo mero sathi ho, ramro manche ho.",
+    "status": "approved",
+    "dateCreated": "2024-03-03T16:05:00Z"
+  },
+  {
+    "wordName": "kanchhi",
+    "wordMeaning": "youngest sister or daughter",
+    "wordSentence": "Kanchhi lai dherai laad cha.",
+    "status": "approved",
+    "dateCreated": "2024-03-04T12:30:00Z"
+  },
+  {
+    "wordName": "jhikke",
+    "wordMeaning": "someone who is easily irritated or whiny",
+    "wordSentence": "Tyo jhikke sanga k k deal garnu parne.",
+    "status": "approved",
+    "dateCreated": "2024-03-05T13:55:00Z"
+  },
+  {
+    "wordName": "momo",
+    "wordMeaning": "dumplings, iconic Nepali street food",
+    "wordSentence": "Aja momo khana janu parcha yaar.",
+    "status": "approved",
+    "dateCreated": "2024-03-06T11:20:00Z"
+  },
+  {
+    "wordName": "keti",
+    "wordMeaning": "girl",
+    "wordSentence": "Tyo keti ta ekdam ramri cha.",
+    "status": "approved",
+    "dateCreated": "2024-03-07T15:45:00Z"
+  },
+  {
+    "wordName": "keta",
+    "wordMeaning": "boy",
+    "wordSentence": "Tyo keta football kheldai cha.",
+    "status": "approved",
+    "dateCreated": "2024-03-08T09:10:00Z"
+  },
+  {
+    "wordName": "thakka",
+    "wordMeaning": "tired or exhausted",
+    "wordSentence": "Aaja kaam garera thakka bhaye.",
+    "status": "approved",
+    "dateCreated": "2024-03-09T14:35:00Z"
+  },
+  {
+    "wordName": "dhilo",
+    "wordMeaning": "late or slow",
+    "wordSentence": "Aaja dhilo bhayo, sorry yaar.",
+    "status": "approved",
+    "dateCreated": "2024-03-10T10:00:00Z"
+  },
+  {
+    "wordName": "chito",
+    "wordMeaning": "fast or quick",
+    "wordSentence": "Chito chito aau, late bhayo.",
+    "status": "approved",
+    "dateCreated": "2024-03-11T16:25:00Z"
+  },
+  {
+    "wordName": "ramro",
+    "wordMeaning": "good or nice",
+    "wordSentence": "Tyo ramro manche ho, biswas garna sakicha.",
+    "status": "approved",
+    "dateCreated": "2024-03-12T12:50:00Z"
+  },
+  {
+    "wordName": "naramro",
+    "wordMeaning": "bad or not good",
+    "wordSentence": "Usle naramro kaam garyo.",
+    "status": "approved",
+    "dateCreated": "2024-03-13T13:15:00Z"
+  },
+  {
+    "wordName": "pugyo",
+    "wordMeaning": "enough or that's it",
+    "wordSentence": "Bas pugyo, aba ghar jaula.",
+    "status": "approved",
+    "dateCreated": "2024-03-14T11:40:00Z"
+  },
+  {
+    "wordName": "jhole",
+    "wordMeaning": "hippie or someone with dreadlocks",
+    "wordSentence": "Thamel ma dherai jhole haru chan.",
+    "status": "approved",
+    "dateCreated": "2024-03-15T15:05:00Z"
+  },
+  {
+    "wordName": "kura",
+    "wordMeaning": "matter, thing or conversation",
+    "wordSentence": "Yo kura kasailai nabhannu hai.",
+    "status": "approved",
+    "dateCreated": "2024-03-16T09:30:00Z"
+  },
+  {
+    "wordName": "bhaat",
+    "wordMeaning": "cooked rice, staple Nepali food",
+    "wordSentence": "Aaja bhaat khako chaina, bhok lagyo.",
+    "status": "approved",
+    "dateCreated": "2024-03-17T14:55:00Z"
+  },
+  {
+    "wordName": "raksi",
+    "wordMeaning": "alcohol or local liquor",
+    "wordSentence": "Dashain ma raksi dherai khayo.",
+    "status": "approved",
+    "dateCreated": "2024-03-18T10:20:00Z"
+  },
+  {
+    "wordName": "chyang",
+    "wordMeaning": "traditional alcoholic beverage made from rice",
+    "wordSentence": "Tamang haru le chyang banaucha.",
+    "status": "approved",
+    "dateCreated": "2024-03-19T16:45:00Z"
+  },
+  {
+    "wordName": "tongba",
+    "wordMeaning": "traditional millet-based alcoholic drink",
+    "wordSentence": "Darjeeling ma tongba khanu parcha.",
+    "status": "approved",
+    "dateCreated": "2024-03-20T12:10:00Z"
+  },
+  {
+    "wordName": "chiya",
+    "wordMeaning": "tea, essential Nepali beverage",
+    "wordSentence": "Bihana ko chiya bina din suru hudaina.",
+    "status": "approved",
+    "dateCreated": "2024-03-21T13:35:00Z"
+  },
+  {
+    "wordName": "pani",
+    "wordMeaning": "water, also used as slang for cheap/worthless",
+    "wordSentence": "Yo phone ta pani jasto cha.",
+    "status": "approved",
+    "dateCreated": "2024-03-22T11:00:00Z"
+  },
+  {
+    "wordName": "topi",
+    "wordMeaning": "traditional Nepali cap",
+    "wordSentence": "Democracy day ma topi lagaunu parcha.",
+    "status": "approved",
+    "dateCreated": "2024-03-23T15:25:00Z"
+  },
+  {
+    "wordName": "daura suruwal",
+    "wordMeaning": "traditional Nepali men's clothing",
+    "wordSentence": "Dashain ma daura suruwal lagaye.",
+    "status": "approved",
+    "dateCreated": "2024-03-24T09:50:00Z"
+  },
+  {
+    "wordName": "gunyo cholo",
+    "wordMeaning": "traditional Nepali women's dress",
+    "wordSentence": "Teej ma gunyo cholo lagaucha.",
+    "status": "approved",
+    "dateCreated": "2024-03-25T14:15:00Z"
+  },
+  {
+    "wordName": "dashain",
+    "wordMeaning": "biggest Nepali festival celebrating goddess Durga",
+    "wordSentence": "Dashain ma ghar jana parcha.",
+    "status": "approved",
+    "dateCreated": "2024-03-26T10:40:00Z"
+  },
+  {
+    "wordName": "tihar",
+    "wordMeaning": "festival of lights celebrated in Nepal",
+    "wordSentence": "Tihar ma kukur puja garnu parcha.",
+    "status": "approved",
+    "dateCreated": "2024-03-27T16:05:00Z"
+  },
+  {
+    "wordName": "tika",
+    "wordMeaning": "vermillion mark on forehead, blessing",
+    "wordSentence": "Dashain ma tika lagaunu huncha.",
+    "status": "approved",
+    "dateCreated": "2024-03-28T12:30:00Z"
+  },
+  {
+    "wordName": "batti",
+    "wordMeaning": "light or electricity",
+    "wordSentence": "Feri batti gayo, load shedding bhayo.",
+    "status": "approved",
+    "dateCreated": "2024-03-29T13:55:00Z"
+  },
+  {
+    "wordName": "load shedding",
+    "wordMeaning": "scheduled power cuts (very common in Nepal)",
+    "wordSentence": "Pahila load shedding 18 ghanta hunthyo.",
+    "status": "approved",
+    "dateCreated": "2024-03-30T11:20:00Z"
+  },
+  {
+    "wordName": "tempo",
+    "wordMeaning": "three-wheeled public transport vehicle",
+    "wordSentence": "Tempo ma jaula ki bus ma.",
+    "status": "approved",
+    "dateCreated": "2024-03-31T15:45:00Z"
+  },
+  {
+    "wordName": "microbus",
+    "wordMeaning": "minibus used for public transport",
+    "wordSentence": "Microbus ma ticket mahango cha.",
+    "status": "approved",
+    "dateCreated": "2024-04-01T09:10:00Z"
+  },
+  {
+    "wordName": "sajha",
+    "wordMeaning": "public/community bus service in Kathmandu",
+    "wordSentence": "Sajha bus ma jana ramro cha.",
+    "status": "approved",
+    "dateCreated": "2024-04-02T14:35:00Z"
+  },
+  {
+    "wordName": "chakka",
+    "wordMeaning": "wheel, also slang for transgender person",
+    "wordSentence": "Bike ko chakka puncture bhayo.",
+    "status": "approved",
+    "dateCreated": "2024-04-03T10:00:00Z"
+  },
+  {
+    "wordName": "ghanti",
+    "wordMeaning": "hour or time",
+    "wordSentence": "2 ghanti dekhi kura khaira chu.",
+    "status": "approved",
+    "dateCreated": "2024-04-04T16:25:00Z"
+  },
+  {
+    "wordName": "baje",
+    "wordMeaning": "grandfather or old man",
+    "wordSentence": "Baje le kahani sunaunuhuncha.",
+    "status": "approved",
+    "dateCreated": "2024-04-05T12:50:00Z"
+  },
+  {
+    "wordName": "baje aama",
+    "wordMeaning": "grandmother",
+    "wordSentence": "Baje aama le momo banaunucha.",
+    "status": "approved",
+    "dateCreated": "2024-04-06T13:15:00Z"
+  },
+  {
+    "wordName": "buwa",
+    "wordMeaning": "father",
+    "wordSentence": "Buwa aaja ghar ma hunuhuncha.",
+    "status": "approved",
+    "dateCreated": "2024-04-07T11:40:00Z"
+  },
+  {
+    "wordName": "aama",
+    "wordMeaning": "mother",
+    "wordSentence": "Aama ko khana sab bhanda mitho.",
+    "status": "approved",
+    "dateCreated": "2024-04-08T15:05:00Z"
+  },
+  {
+    "wordName": "sala",
+    "wordMeaning": "brother-in-law or mild insult",
+    "wordSentence": "Sala kya gardai chas yaar.",
+    "status": "approved",
+    "dateCreated": "2024-04-09T09:30:00Z"
+  },
+  {
+    "wordName": "saali",
+    "wordMeaning": "sister-in-law",
+    "wordSentence": "Saali aayo bhane tension huncha.",
+    "status": "approved",
+    "dateCreated": "2024-04-10T14:55:00Z"
+  },
+  {
+    "wordName": "sasu",
+    "wordMeaning": "mother-in-law",
+    "wordSentence": "Sasu le ghar sambhal garnu huncha.",
+    "status": "approved",
+    "dateCreated": "2024-04-11T10:20:00Z"
+  },
+  {
+    "wordName": "sasura",
+    "wordMeaning": "father-in-law",
+    "wordSentence": "Sasura ekdam strict hunuhuncha.",
+    "status": "approved",
+    "dateCreated": "2024-04-12T16:45:00Z"
+  },
+  {
+    "wordName": "jwain",
+    "wordMeaning": "son-in-law",
+    "wordSentence": "Jwain aayo bhane ramro khana pakaucha.",
+    "status": "approved",
+    "dateCreated": "2024-04-13T12:10:00Z"
+  },
+  {
+    "wordName": "bhauju",
+    "wordMeaning": "sister-in-law (brother's wife)",
+    "wordSentence": "Bhauju le mitha khana dinu bhayo.",
+    "status": "approved",
+    "dateCreated": "2024-04-14T13:35:00Z"
+  },
+  {
+    "wordName": "bhena",
+    "wordMeaning": "brother-in-law (sister's husband)",
+    "wordSentence": "Bhena sanga bike ma jaula.",
+    "status": "approved",
+    "dateCreated": "2024-04-15T11:00:00Z"
+  },
+  {
+    "wordName": "khoi",
+    "wordMeaning": "where or expressing uncertainty",
+    "wordSentence": "Malai khoi thaha chaina kaha gayo.",
+    "status": "approved",
+    "dateCreated": "2024-04-16T15:25:00Z"
+  },
+  {
+    "wordName": "hajur",
+    "wordMeaning": "polite yes or respectful address",
+    "wordSentence": "Hajur sir, ma aauchu bholi.",
+    "status": "approved",
+    "dateCreated": "2024-04-17T09:50:00Z"
+  },
+  {
+    "wordName": "huncha",
+    "wordMeaning": "okay, it will be, alright",
+    "wordSentence": "Huncha, bholi meet garula.",
+    "status": "approved",
+    "dateCreated": "2024-04-18T14:15:00Z"
+  },
+  {
+    "wordName": "hudaina",
+    "wordMeaning": "not okay, won't work, can't",
+    "wordSentence": "Yo hudaina yaar, aru plan socha.",
+    "status": "approved",
+    "dateCreated": "2024-04-19T10:40:00Z"
+  },
+  {
+    "wordName": "yaar",
+    "wordMeaning": "dude, friend (borrowed from Hindi)",
+    "wordSentence": "Yaar, kya gardai chas.",
+    "status": "approved",
+    "dateCreated": "2024-04-20T16:05:00Z"
+  },
+  {
+    "wordName": "k cha",
+    "wordMeaning": "what's up, how are you",
+    "wordSentence": "Dai, k cha khabar.",
+    "status": "approved",
+    "dateCreated": "2024-04-21T12:30:00Z"
+  },
+  {
+    "wordName": "thik cha",
+    "wordMeaning": "I'm fine, it's okay",
+    "wordSentence": "Ma thik chu, timi kasto cha.",
+    "status": "approved",
+    "dateCreated": "2024-04-22T13:55:00Z"
+  },
+  {
+    "wordName": "sanchai chu",
+    "wordMeaning": "I'm well, I'm good",
+    "wordSentence": "Ma ekdam sanchai chu yaar.",
+    "status": "approved",
+    "dateCreated": "2024-04-23T11:20:00Z"
+  },
+  {
+    "wordName": "kya ho",
+    "wordMeaning": "what is it, what's the matter",
+    "wordSentence": "Kya ho, kina tension lirako.",
+    "status": "approved",
+    "dateCreated": "2024-04-24T15:45:00Z"
+  },
+  {
+    "wordName": "chalcha",
+    "wordMeaning": "it's okay, it works, no problem",
+    "wordSentence": "Tyo phone feri chalcha, majale chalaunu.",
+    "status": "approved",
+    "dateCreated": "2024-04-25T10:10:00Z"
   }
 ]

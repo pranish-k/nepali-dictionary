@@ -17,6 +17,7 @@ const Word = sequelize.define(
     wordID: {
       type: DataTypes.INTEGER,
       primaryKey: true,
+      autoIncrement: true,
     },
     wordName: {
       type: DataTypes.STRING,
@@ -28,6 +29,11 @@ const Word = sequelize.define(
     },
     wordSentence: {
       type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    status: {
+      type: DataTypes.STRING,
+      defaultValue: "approved",
       allowNull: false,
     },
     dateCreated: {

@@ -29,8 +29,8 @@ build/
 # Coverage reports
 coverage/
 
-# Local data (if you want to ignore test/dev data)
-backend/data/data.json
+# Old client folder (replaced by React frontend)
+client/
 
 # Misc
 *.log

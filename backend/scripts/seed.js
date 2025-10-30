@@ -16,10 +16,10 @@ async function seed() {
 
     for (const entry of allWords) {
       await Word.create({
-        wordID: entry.wordID,
         wordName: entry.wordName,
         wordMeaning: entry.wordMeaning,
         wordSentence: entry.wordSentence,
+        status: entry.status || "approved",
         dateCreated: entry.dateCreated,
       });
     }

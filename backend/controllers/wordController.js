@@ -2,7 +2,11 @@ import { Word } from "../models/index.js";
 
 export async function getWords(req, res) {
   try {
-    const words = await Word.findAll();
+    // Only return approved words by default
+    const words = await Word.findAll({
+      where: { status: "approved" },
+      order: [["dateCreated", "DESC"]],
+    });
     res.json(words);
   } catch (err) {
     console.error("Fetch error:", err);
@@ -24,12 +28,12 @@ export async function getWordById(req, res) {
 
 export async function addWord(req, res) {
   try {
-    const { wordID, wordName, wordMeaning, wordSentence } = req.body;
+    const { wordName, wordMeaning, wordSentence, status } = req.body;
     const newWord = await Word.create({
-      wordID,
       wordName,
       wordMeaning,
       wordSentence,
+      status: status || "pending", // Default to pending for user submissions
       dateCreated: new Date(),
     });
     res.status(201).json(newWord);

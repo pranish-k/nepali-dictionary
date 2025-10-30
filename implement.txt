@@ -1,0 +1,621 @@
+Goal: Convert the prototype (React + Vite frontend, Express + Node + SQLite backend) into a live, production-ready always-on site (NepaliUrbanDictionary.com).
+Each point below is a separate development problem to solve.
+
+STATUS LEGEND: ✅ = Mostly Complete | ⚠️ = Partially Done | ❌ = Not Started
+
+1. Database setup ✅ (COMPLETED - basic version done, missing wordNepaliScript field)
+
+Convert this into a proper SQLite database with a words table and migration/seed script.
+
+The table should include fields for: wordName, wordNepaliScript, wordMeaning, wordSentence, status (approved/pending), and dateCreated.
+
+Seed the existing 100 words into the database.
+
+Make sure the API uses this DB instead of the JSON file.
+
+Current state:
+- SQLite + Sequelize configured
+- Word model created with most fields (missing wordNepaliScript)
+- Seed script created
+- API controllers using database
+
+TODO:
+- Add wordNepaliScript field to model
+- Create proper migration system
+- Add indexes for performance (wordName, status)
+
+2. Backend API design ✅ (COMPLETED - basic endpoints done, needs documentation + search endpoint)
+
+Define REST API endpoints for:
+
+Getting all approved words ✅
+
+Getting one word by ID ✅
+
+Searching words by name ⚠️ (filtering done client-side, needs server endpoint)
+
+Submitting a new word (sets status = pending) ✅
+
+Updating or deleting a word (admin only) ✅ (implemented but not protected yet)
+
+Document all endpoints (methods, paths, sample responses). ❌
+
+Implement consistent error responses. ⚠️ (basic error handling exists)
+
+TODO:
+- Add dedicated /api/words/search?q=term endpoint
+- Add /api/words/pending endpoint for admin
+- Add /api/words/:id/approve endpoint for admin
+- Document all endpoints in API.md
+- Standardize error response format across all endpoints
+- Add request validation middleware
+
+3. Input validation ❌ (NOT STARTED - critical for production)
+
+Add server-side validation for all incoming requests.
+
+Prevent empty fields, SQL injections, and overly long submissions.
+
+Sanitize output for safety.
+
+TODO:
+- Install and configure express-validator or joi
+- Add validation rules for all POST/PUT endpoints:
+  - wordName: required, string, max 200 chars, trim whitespace
+  - wordMeaning: required, string, max 2000 chars
+  - wordSentence: required, string, max 1000 chars
+  - wordNepaliScript: optional, string, max 200 chars
+- Sanitize HTML to prevent XSS attacks
+- Add validation middleware to routes
+- Return clear validation error messages (400 status)
+
+4. Anti-spam & security ❌ (NOT STARTED - critical for public site)
+
+Protect the submission endpoint from spam and bots.
+
+Add rate limiting and CAPTCHA (like Google reCAPTCHA or hCaptcha).
+
+Log and reject repeated spammy requests.
+
+Secure all routes and sanitize all inputs.
+
+TODO:
+- Install express-rate-limit package
+- Add rate limiting to /api/words POST (e.g., 3 submissions per hour per IP)
+- Add rate limiting to all API endpoints (100 requests per 15 min per IP)
+- Integrate hCaptcha or Google reCAPTCHA on submit form
+- Add CAPTCHA verification middleware on backend
+- Install helmet.js for security headers
+- Enable CORS properly for production domain
+- Add request logging (morgan or winston)
+- Consider honeypot field in submit form
+
+5. Admin authentication system ❌ (NOT STARTED - required before admin panel)
+
+Implement a basic admin login (username + password stored in env file).
+
+Protect endpoints that approve/edit/delete words.
+
+Use tokens or sessions for admin authentication.
+
+Add logout functionality.
+
+TODO:
+- Install jsonwebtoken (JWT) and bcryptjs packages
+- Create /api/auth/login endpoint
+- Hash admin password in .env (use bcrypt)
+- Generate JWT token on successful login
+- Create auth middleware to verify JWT
+- Protect PUT/DELETE /api/words/* endpoints with auth middleware
+- Add token refresh mechanism
+- Implement /api/auth/logout endpoint
+- Set httpOnly cookies for tokens (more secure than localStorage)
+
+6. Admin panel UI ❌ (NOT STARTED - depends on task 5)
+
+Add a frontend admin page (separate route).
+
+Admin should be able to:
+
+Log in
+
+See pending submissions
+
+Approve, edit, or delete words
+
+Search or filter pending words
+
+Make it visually simple and consistent with the rest of the app.
+
+TODO:
+- Create /admin route and Admin.jsx page
+- Create AdminLogin.jsx component with form
+- Create AdminDashboard.jsx component showing:
+  - Pending words list with approve/reject/edit buttons
+  - Approved words list with edit/delete options
+  - Statistics (total words, pending count, etc.)
+- Add protected route wrapper (redirect if not authenticated)
+- Style admin panel consistently with main site
+- Add confirmation modals for delete actions
+- Show success/error toast notifications
+
+7. Frontend integration with backend ⚠️ (PARTIALLY DONE - browse and submit working)
+
+Replace all data.json references with API calls.
+
+Update search, browse, and random word features to use live data from the API.
+
+Update submit form to send to the backend and handle success/error messages.
+
+Add upvote/downvote feature for words if possible.
+
+Current state:
+- Browse page fetches from /api/words ✅
+- Submit page posts to /api/words ✅
+- Search filtering done client-side (works but inefficient)
+
+TODO:
+- Update Home page to fetch random word from API
+- Create /api/words/random endpoint for random word feature
+- Update Word detail page to fetch by ID from API
+- Switch search to use server-side endpoint when available
+- Add upvote/downvote functionality:
+  - Add upvotes/downvotes fields to Word model
+  - Create POST /api/words/:id/vote endpoint
+  - Add vote buttons to word cards
+  - Track votes by IP or session to prevent duplicate votes
+- Add loading states and error boundaries
+- Add pagination for browse page (load 50 words at a time)
+
+8. Deployment preparation ❌ (NOT STARTED - critical before deployment)
+
+Prepare .env system for both frontend and backend (for DB path, ports, admin credentials, CAPTCHA keys, etc.).
+
+Create scripts to build and run both parts together.
+
+Add health check route for backend.
+
+TODO:
+- Create .env.example file with all required variables:
+  - NODE_ENV=production
+  - PORT=3000
+  - DATABASE_PATH=/path/to/database.sqlite
+  - JWT_SECRET=random_secret_key
+  - ADMIN_USERNAME=admin
+  - ADMIN_PASSWORD_HASH=hashed_password
+  - CAPTCHA_SECRET_KEY=your_captcha_key
+  - ALLOWED_ORIGIN=https://nepaliurbandictionary.com
+- Create separate .env for development
+- Add .env to .gitignore (verify it's there)
+- Update backend to use environment variables
+- Create build script: build frontend + copy to backend/public
+- Add GET /api/health endpoint returning {status: "ok", timestamp}
+- Create production start script using NODE_ENV=production
+- Document environment setup in DEPLOYMENT.md
+
+9. Hosting (always-on) ❌ (NOT STARTED - deployment phase)
+
+Set up deployment on a VPS (e.g., DigitalOcean, Hetzner, or Linode) — not Render or free hosts.
+
+Install and configure:
+
+Node.js
+
+Nginx (reverse proxy)
+
+SQLite
+
+PM2 (to keep Node running 24/7)
+
+Certbot (for SSL)
+
+Serve frontend with Nginx, proxy API requests to Node backend.
+
+TODO:
+- Purchase VPS (recommend: DigitalOcean $6/mo droplet or Hetzner)
+- SSH into server and set up firewall (ufw allow 22,80,443)
+- Install Node.js (use nvm for version management)
+- Install nginx: apt install nginx
+- Install PM2 globally: npm install -g pm2
+- Clone repository to /var/www/nepali-dictionary
+- Run npm install in both root and frontend
+- Build frontend: npm run build
+- Configure nginx:
+  - Serve static files from frontend/dist
+  - Proxy /api requests to localhost:3000
+  - Enable gzip compression
+- Start app with PM2: pm2 start backend/app.js --name nepali-dict
+- Configure PM2 to start on boot: pm2 startup && pm2 save
+- Test that site works on server IP
+
+10. Domain & SSL ❌ (NOT STARTED - depends on task 9)
+
+Point nepaliurbandictionary.com and optionally api.nepaliurbandictionary.com to the VPS IP.
+
+Get and renew SSL certificates automatically with Certbot.
+
+Redirect all HTTP traffic to HTTPS.
+
+TODO:
+- Verify domain ownership (nepaliurbandictionary.com)
+- Add DNS A record pointing to VPS IP address
+- Wait for DNS propagation (can take 1-48 hours)
+- Install Certbot: apt install certbot python3-certbot-nginx
+- Run: certbot --nginx -d nepaliurbandictionary.com -d www.nepaliurbandictionary.com
+- Verify auto-renewal works: certbot renew --dry-run
+- Update nginx config to redirect HTTP to HTTPS
+- Test SSL rating at ssllabs.com
+- Add HSTS header in nginx for security
+
+11. Backup & restore ❌ (NOT STARTED - critical for data safety)
+
+Automate daily SQLite backups.
+
+Store backups locally or in cloud storage (e.g., Dropbox, S3).
+
+Add a simple restore script or guide.
+
+TODO:
+- Create backup script (backend/scripts/backup.sh):
+  - Copy database.sqlite to backups/ folder with timestamp
+  - Keep last 30 days of backups locally
+  - Upload to cloud storage (AWS S3 or Backblaze B2)
+- Set up cron job to run backup daily at 3 AM:
+  - crontab -e
+  - 0 3 * * * /var/www/nepali-dictionary/backend/scripts/backup.sh
+- Create restore script with instructions
+- Test backup and restore process before going live
+- Document recovery procedure in DEPLOYMENT.md
+- Consider database replication for high availability (optional)
+
+12. Ads integration ❌ (NOT STARTED - can be done post-launch)
+
+Add placeholders for Google AdSense (or similar).
+
+Only load ads in production mode and when env variables are present.
+
+Document how to plug in ad IDs once approved.
+
+TODO:
+- Apply for Google AdSense account (requires live site with content)
+- Create AdComponent.jsx for ad slots
+- Add ad placements:
+  - Between word cards on browse page
+  - Sidebar on home page
+  - Bottom of word detail pages
+- Use environment variable VITE_ADSENSE_ID for ad client ID
+- Only render ads when in production mode
+- Add ads.txt file to public folder (required by AdSense)
+- Follow AdSense policies (avoid prohibited content)
+- Document ad setup in MONETIZATION.md
+
+13. Analytics ❌ (NOT STARTED - important for tracking growth)
+
+Add simple analytics (Google Analytics or Plausible).
+
+Load tracking script only in production.
+
+TODO:
+- Choose analytics platform:
+  - Google Analytics 4 (free, comprehensive)
+  - Plausible (privacy-focused, paid but simple)
+  - Umami (self-hosted, open source)
+- Create analytics account and get tracking ID
+- Add tracking script to index.html or create Analytics.jsx component
+- Use VITE_ANALYTICS_ID environment variable
+- Only load in production (check import.meta.env.PROD)
+- Track key events:
+  - Page views
+  - Word searches
+  - Word submissions
+  - Admin logins
+- Set up goals/conversions for submissions
+- Add privacy policy page mentioning analytics
+
+14. Monitoring & uptime ❌ (NOT STARTED - critical for production reliability)
+
+Add /healthz or /status endpoint for uptime checks.
+
+Set up UptimeRobot (or similar) to monitor and alert on downtime.
+
+Add error logging and crash reporting.
+
+TODO:
+- Implement GET /api/health endpoint (see task 8)
+- Set up UptimeRobot (free plan allows 50 monitors):
+  - Monitor https://nepaliurbandictionary.com every 5 minutes
+  - Monitor https://nepaliurbandictionary.com/api/health
+  - Set up email/SMS alerts for downtime
+- Add error logging:
+  - Install winston for structured logging
+  - Log errors to file: /var/log/nepali-dict/error.log
+  - Rotate logs daily (use winston-daily-rotate-file)
+- Add crash reporting (optional):
+  - Sentry (free tier available)
+  - Track frontend and backend errors
+- Set up PM2 monitoring: pm2 monit
+- Configure PM2 to restart on crashes (default behavior)
+- Document how to check logs in DEPLOYMENT.md
+
+15. Final deployment checklist ❌ (RUN BEFORE GOING LIVE)
+
+Pre-launch verification checklist - all must pass before announcing site publicly:
+
+SECURITY & PERFORMANCE:
+☐ SSL certificate working (HTTPS, no warnings)
+☐ All HTTP traffic redirects to HTTPS
+☐ Security headers configured (helmet.js installed)
+☐ Rate limiting active on all endpoints
+☐ CAPTCHA working on submit form
+☐ Input validation on all forms
+☐ Admin routes protected by authentication
+☐ .env file not committed to git
+☐ Database backed up and backup script tested
+
+FUNCTIONALITY:
+☐ Database seeded with initial words
+☐ Admin login verified (can log in successfully)
+☐ Word submission → approval → public display workflow working
+☐ Browse page loads and displays words
+☐ Search functionality works
+☐ Random word feature works
+☐ All API endpoints responding correctly
+☐ Error pages (404, 500) display properly
+
+MONITORING & RELIABILITY:
+☐ PM2 running and configured to restart on crash
+☐ PM2 set to start on server boot
+☐ UptimeRobot monitoring configured with alerts
+☐ Health check endpoint responding
+☐ Error logging working
+☐ Daily backups running via cron
+
+OPTIONAL (can be added post-launch):
+☐ Ads integration complete (if pursuing)
+☐ Analytics tracking verified
+☐ Privacy policy page added
+☐ Terms of service page added
+
+PERFORMANCE:
+☐ Frontend build optimized (npm run build)
+☐ Gzip compression enabled in nginx
+☐ Database indexes created
+☐ Page load time < 3 seconds
+☐ Mobile responsive design verified
+
+16. Post-launch maintenance ❌ (DOCUMENT BEFORE LAUNCH)
+
+Document how to:
+
+Approve new submissions
+
+Restore backups
+
+Restart server
+
+Renew SSL certificates
+
+Update the codebase safely
+
+TODO - Create MAINTENANCE.md with procedures for:
+- Daily tasks:
+  - Check pending submissions via admin panel
+  - Review and approve/reject submitted words
+  - Monitor error logs for issues
+- Weekly tasks:
+  - Review analytics for traffic patterns
+  - Check uptime reports
+  - Verify backups are running
+- Monthly tasks:
+  - Update dependencies (npm update)
+  - Review and update content guidelines
+  - Check SSL certificate expiry date
+- Emergency procedures:
+  - How to restore from backup
+  - How to restart crashed server (pm2 restart all)
+  - How to rollback broken deployment
+  - How to check server logs (pm2 logs)
+- Deployment updates:
+  - Git pull latest changes
+  - Run npm install if package.json changed
+  - Rebuild frontend (npm run build)
+  - Restart PM2 (pm2 restart nepali-dict)
+  - Clear nginx cache if needed
+- SSL renewal (usually automatic, but document manual process):
+  - sudo certbot renew
+  - sudo systemctl reload nginx
+
+================================================================================
+ADDITIONAL CRITICAL TASKS (MISSING FROM ORIGINAL)
+================================================================================
+
+17. SEO & Meta Tags ❌ (IMPORTANT - for discoverability)
+
+Add proper meta tags for search engines and social media sharing.
+
+TODO:
+- Add to index.html:
+  - <title> tag with relevant keywords
+  - Meta description (155 chars)
+  - Open Graph tags for Facebook sharing
+  - Twitter Card tags
+  - Canonical URLs
+- Create sitemap.xml for search engines
+- Create robots.txt file
+- Add schema.org markup for dictionary entries
+- Submit sitemap to Google Search Console
+- Add rel="canonical" to prevent duplicate content
+- Optimize page titles and descriptions per route
+- Add alt text to all images
+- Implement lazy loading for images
+
+18. CORS Configuration ❌ (CRITICAL - security issue)
+
+Properly configure CORS to prevent unauthorized API access.
+
+TODO:
+- Install cors package: npm install cors
+- Configure CORS in backend/app.js:
+  - Allow only production domain in production
+  - Allow localhost in development
+- Set ALLOWED_ORIGINS in .env
+- Restrict CORS to specific endpoints if needed
+- Test CORS configuration from different origins
+
+19. Database Optimization ❌ (IMPORTANT - for performance at scale)
+
+Optimize database queries and structure for better performance.
+
+TODO:
+- Add database indexes:
+  - CREATE INDEX idx_word_name ON words(wordName)
+  - CREATE INDEX idx_status ON words(status)
+  - CREATE INDEX idx_date ON words(dateCreated)
+- Consider full-text search for better search performance
+- Add pagination to API endpoints (limit/offset)
+- Implement caching for frequently accessed data (Redis optional)
+- Monitor query performance with EXPLAIN
+- Set up database constraints (UNIQUE on wordName if needed)
+
+20. Content Moderation System ❌ (CRITICAL - for quality control)
+
+Implement safeguards against inappropriate content.
+
+TODO:
+- Create content policy/guidelines document
+- Add profanity filter library (bad-words or similar)
+- Flag submissions with suspicious content for manual review
+- Add report/flag feature for users to report inappropriate words
+- Implement shadowban for repeat spammers
+- Create blocklist for banned words/phrases
+- Add email notifications to admin for new submissions
+- Consider AI moderation (OpenAI Moderation API) for scale
+
+21. Email System ❌ (OPTIONAL - for user engagement)
+
+Set up email notifications for various events.
+
+TODO:
+- Choose email service (SendGrid, AWS SES, Mailgun)
+- Configure email templates:
+  - New submission notification to admin
+  - Approval confirmation (if collecting submitter email)
+  - Weekly digest of new words
+- Add email to .env configuration
+- Create email service wrapper in backend
+- Implement unsubscribe functionality
+- Follow email best practices (SPF, DKIM, DMARC)
+
+22. Legal Pages ❌ (REQUIRED - legal protection)
+
+Create required legal pages for public website.
+
+TODO:
+- Create Privacy Policy page:
+  - Explain what data is collected (analytics, cookies, IP for rate limiting)
+  - How data is used and stored
+  - User rights under GDPR (if applicable)
+- Create Terms of Service page:
+  - Usage guidelines
+  - Content ownership
+  - Disclaimer of liability
+  - Account termination policy
+- Create About page explaining the project
+- Create Contact page or email
+- Add cookie consent banner if using analytics/ads
+- Review legal requirements for Nepal specifically
+
+23. Mobile App Considerations ❌ (FUTURE - optional)
+
+Prepare for potential mobile app version.
+
+TODO:
+- Ensure API is ready for mobile consumption
+- Add API versioning (/api/v1/words)
+- Consider Progressive Web App (PWA):
+  - Add manifest.json
+  - Implement service worker for offline access
+  - Add "Add to Home Screen" prompt
+  - Cache static assets
+- Test responsive design on various devices
+- Optimize API responses (minimize payload size)
+
+24. Performance Optimization ❌ (IMPORTANT - user experience)
+
+Optimize frontend and backend for fast load times.
+
+TODO - Frontend:
+- Code splitting in Vite
+- Lazy load routes with React.lazy()
+- Optimize images (WebP format, compression)
+- Minimize bundle size (analyze with rollup-plugin-visualizer)
+- Add loading skeletons for better UX
+- Implement virtual scrolling for long lists
+- Use React.memo for expensive components
+- Debounce search input
+
+TODO - Backend:
+- Enable response compression (compression middleware)
+- Set proper cache headers
+- Minimize database queries (eager loading)
+- Use connection pooling
+- Monitor memory usage
+- Profile slow endpoints
+
+25. Testing ❌ (RECOMMENDED - prevent bugs)
+
+Add automated tests to catch bugs before deployment.
+
+TODO:
+- Frontend tests (Vitest + React Testing Library):
+  - Component rendering tests
+  - User interaction tests
+  - API integration tests
+- Backend tests (Jest or Mocha):
+  - API endpoint tests
+  - Database operation tests
+  - Authentication tests
+  - Validation tests
+- End-to-end tests (Playwright or Cypress):
+  - User workflows (browse, search, submit)
+  - Admin workflows
+- Set up CI/CD to run tests on git push (GitHub Actions)
+- Add test coverage reporting
+- Document how to run tests
+
+================================================================================
+PRIORITY ORDER FOR IMPLEMENTATION
+================================================================================
+
+PHASE 1 - MVP MUST-HAVES (before any launch):
+→ Task 3: Input validation
+→ Task 4: Anti-spam & security (at least rate limiting + CAPTCHA)
+→ Task 5: Admin authentication
+→ Task 6: Admin panel UI
+→ Task 8: Deployment preparation (.env, health check)
+→ Task 18: CORS configuration
+→ Task 22: Legal pages (at minimum: Privacy & Terms)
+
+PHASE 2 - DEPLOYMENT (can go live after this):
+→ Task 9: VPS hosting setup
+→ Task 10: Domain & SSL
+→ Task 11: Backup system
+→ Task 14: Monitoring & uptime
+→ Task 15: Final deployment checklist
+→ Task 16: Maintenance documentation
+
+PHASE 3 - GROWTH & OPTIMIZATION (post-launch):
+→ Task 7: Complete frontend integration (random word, voting)
+→ Task 13: Analytics
+→ Task 17: SEO optimization
+→ Task 19: Database optimization
+→ Task 20: Content moderation
+→ Task 24: Performance optimization
+
+PHASE 4 - MONETIZATION (after traffic):
+→ Task 12: Ads integration
+→ Task 21: Email system
+
+PHASE 5 - FUTURE ENHANCEMENTS:
+→ Task 23: Mobile app/PWA
+→ Task 25: Comprehensive testing
