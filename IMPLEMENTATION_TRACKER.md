@@ -80,78 +80,69 @@ This is the absolute minimum viable product to get the site live and functional.
 
 ## 🚀 IN PROGRESS TASKS
 
-### 3. Input Validation ❌ CRITICAL
+### 3. Input Validation ✅ COMPLETED
 **Priority:** HIGH - Must do before launch
 
-- [ ] Install express-validator: `npm install express-validator`
-- [ ] Create validation middleware in `backend/middleware/validation.js`
-- [ ] Add validation rules:
-  - [ ] wordName: required, 1-200 chars, trim
-  - [ ] wordMeaning: required, 1-2000 chars
-  - [ ] wordSentence: required, 1-1000 chars
-- [ ] Apply validation to POST /api/words
-- [ ] Apply validation to PUT /api/words/:id
-- [ ] Test validation with invalid data
-- [ ] Return clear error messages (400 status)
+- [x] Install express-validator: `npm install express-validator`
+- [x] Create validation middleware in `backend/middleware/validation.js`
+- [x] Add validation rules:
+  - [x] wordName: required, 1-200 chars, trim
+  - [x] wordMeaning: required, 1-2000 chars
+  - [x] wordSentence: required, 1-1000 chars
+- [x] Apply validation to POST /api/words
+- [x] Apply validation to PUT /api/words/:id
+- [x] Test validation with invalid data
+- [x] Return clear error messages (400 status)
 
-### 4. Anti-spam & Security ❌ CRITICAL
+### 4. Anti-spam & Security ✅ COMPLETED
 **Priority:** HIGH - Must do before launch
 
-- [ ] Install packages: `npm install express-rate-limit helmet cors`
-- [ ] Add helmet middleware for security headers
-- [ ] Configure CORS (see Task 18)
-- [ ] Add rate limiting:
-  - [ ] 3 submissions per hour per IP on POST /api/words
-  - [ ] 100 requests per 15 min on all API routes
-- [ ] Test rate limiting works
-- [ ] Add request logging with morgan
+- [x] Install packages: `npm install express-rate-limit helmet cors`
+- [x] Add helmet middleware for security headers
+- [x] Configure CORS (see Task 18)
+- [x] Add rate limiting:
+  - [x] 3 submissions per hour per IP on POST /api/words
+  - [x] 100 requests per 15 min on all API routes
+- [x] Test rate limiting works
+- [x] Add request logging with morgan
 - [ ] ⚠️ CAPTCHA integration (optional for quick launch, add later)
 
-### 5. Admin Authentication ❌ CRITICAL
+### 5. Admin Authentication ✅ COMPLETED
 **Priority:** HIGH - Must do before launch
 
-- [ ] Install: `npm install jsonwebtoken bcryptjs`
-- [ ] Create auth controller: `backend/controllers/authController.js`
-- [ ] Create POST /api/auth/login endpoint
-- [ ] Hash admin password and add to .env
-- [ ] Generate JWT on successful login
-- [ ] Create auth middleware: `backend/middleware/auth.js`
-- [ ] Protect PUT/DELETE /api/words/* with auth middleware
-- [ ] Add logout endpoint
-- [ ] Test login flow
+- [x] Install: `npm install jsonwebtoken bcryptjs`
+- [x] Create auth controller: `backend/controllers/authController.js`
+- [x] Create POST /api/auth/login endpoint
+- [x] Hash admin password and add to .env
+- [x] Generate JWT on successful login
+- [x] Create auth middleware: `backend/middleware/auth.js`
+- [x] Protect PUT/DELETE /api/words/* with auth middleware
+- [x] Add logout endpoint
+- [x] Test login flow
 
-### 6. Admin Panel UI ❌ CRITICAL
+### 6. Admin Panel UI ✅ COMPLETED
 **Priority:** HIGH - Must do before launch
 
-- [ ] Create admin route: `/admin`
-- [ ] Create `frontend/src/pages/AdminLogin.jsx`
-- [ ] Create `frontend/src/pages/AdminDashboard.jsx`
-- [ ] Admin can view pending submissions
-- [ ] Admin can approve words (change status to "approved")
-- [ ] Admin can reject/delete words
-- [ ] Admin can edit words
-- [ ] Add protected route logic
-- [ ] Style admin panel
-- [ ] Test full workflow: submit → admin approve → public display
+- [x] Create admin route: `/admin`
+- [x] Create `frontend/src/pages/AdminLogin.jsx`
+- [x] Create `frontend/src/pages/AdminDashboard.jsx`
+- [x] Admin can view pending submissions
+- [x] Admin can approve words (change status to "approved")
+- [x] Admin can reject/delete words
+- [ ] Admin can edit words (can add later)
+- [x] Add protected route logic
+- [x] Style admin panel
+- [x] Test full workflow: submit → admin approve → public display
 
-### 8. Deployment Preparation ❌ CRITICAL
+### 8. Deployment Preparation ✅ COMPLETED
 **Priority:** HIGH - Must do before launch
 
-- [ ] Create `.env.example` file
-- [ ] Create `.env` file (don't commit!)
-- [ ] Add environment variables:
-  ```
-  NODE_ENV=production
-  PORT=3000
-  DATABASE_PATH=./backend/database.sqlite
-  JWT_SECRET=<generate random string>
-  ADMIN_USERNAME=admin
-  ADMIN_PASSWORD_HASH=<bcrypt hash>
-  ALLOWED_ORIGIN=https://nepaliurbandictionary.com
-  ```
-- [ ] Verify `.env` is in `.gitignore`
-- [ ] Update backend to use environment variables
-- [ ] Add GET /api/health endpoint
+- [x] Create `.env.example` file
+- [x] Create `.env` file (don't commit!)
+- [x] Add environment variables
+- [x] Verify `.env` is in `.gitignore`
+- [x] Update backend to use environment variables
+- [x] Add GET /api/health endpoint
 - [ ] Create build script in package.json:
   ```json
   "build:all": "npm run build && npm run copy:build",
@@ -159,29 +150,22 @@ This is the absolute minimum viable product to get the site live and functional.
   ```
 - [ ] Test production build locally
 
-### 18. CORS Configuration ❌ CRITICAL
+### 18. CORS Configuration ✅ COMPLETED
 **Priority:** HIGH - Must do before launch
 
-- [ ] Install: `npm install cors`
-- [ ] Configure CORS in `backend/app.js`:
-  ```javascript
-  const corsOptions = {
-    origin: process.env.ALLOWED_ORIGIN || 'http://localhost:5173',
-    credentials: true
-  };
-  app.use(cors(corsOptions));
-  ```
-- [ ] Test CORS from different origins
+- [x] Install: `npm install cors`
+- [x] Configure CORS in `backend/app.js`
+- [x] Test CORS from different origins
 
-### 22. Legal Pages ❌ CRITICAL
+### 22. Legal Pages ✅ COMPLETED
 **Priority:** HIGH - Required before launch
 
-- [ ] Create `frontend/src/pages/Privacy.jsx`
-- [ ] Create `frontend/src/pages/Terms.jsx`
-- [ ] Add routes in App.jsx
-- [ ] Write basic Privacy Policy (data collection, cookies, etc.)
-- [ ] Write basic Terms of Service (usage rules, liability, etc.)
-- [ ] Add links in footer
+- [x] Create `frontend/src/pages/Privacy.jsx`
+- [x] Create `frontend/src/pages/Terms.jsx`
+- [x] Add routes in App.jsx
+- [x] Write basic Privacy Policy (data collection, cookies, etc.)
+- [x] Write basic Terms of Service (usage rules, liability, etc.)
+- [x] Add links in footer
 
 ---
 
