@@ -6,12 +6,17 @@ import {
   addWord,
   updateWord,
   deleteWord,
+  getPendingWords,
+  approveWord,
+  rejectWord,
+  getRandomWord,
 } from "../controllers/wordController.js";
 import {
   wordValidationRules,
   validate,
   sanitizeInput,
 } from "../middleware/validation.js";
+import { authenticateToken, requireAdmin } from "../middleware/auth.js";
 
 const router = express.Router();
 
@@ -24,10 +29,17 @@ const submitLimiter = rateLimit({
   legacyHeaders: false,
 });
 
+// Public routes
 router.get("/words", getWords);
+router.get("/words/random", getRandomWord);
 router.get("/words/:id", getWordById);
 router.post("/words", submitLimiter, sanitizeInput, wordValidationRules, validate, addWord);
-router.put("/words/:id", sanitizeInput, wordValidationRules, validate, updateWord);
-router.delete("/words/:id", deleteWord);
+
+// Admin-only routes (protected)
+router.get("/words/pending/all", authenticateToken, requireAdmin, getPendingWords);
+router.post("/words/:id/approve", authenticateToken, requireAdmin, approveWord);
+router.post("/words/:id/reject", authenticateToken, requireAdmin, rejectWord);
+router.put("/words/:id", authenticateToken, requireAdmin, sanitizeInput, wordValidationRules, validate, updateWord);
+router.delete("/words/:id", authenticateToken, requireAdmin, deleteWord);
 
 export default router;

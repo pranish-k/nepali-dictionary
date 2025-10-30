@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -6,6 +7,7 @@ import cors from "cors";
 import rateLimit from "express-rate-limit";
 import morgan from "morgan";
 import router from "./routes/dictionaryRoutes.js";
+import authRouter from "./routes/authRoutes.js";
 import { sequelize } from "./models/index.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -60,7 +62,8 @@ app.get("/api/health", (req, res) => {
 // Apply rate limiters
 app.use("/api", apiLimiter);
 
-// Mount API router
+// Mount API routers
+app.use("/api/auth", authRouter);
 app.use("/api", router);
 
 // Verify DB connection
