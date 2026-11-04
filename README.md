@@ -41,10 +41,30 @@ A modern web application for exploring Nepali slang and urban words. Built with 
    cd ..
    ```
 
-2. **Seed the database** (run once)
+2. **Configure environment variables**
+   ```bash
+   cp .env.example .env
+   ```
+   Then edit `.env` and set real values (see [Environment Variables](#environment-variables)).
+   The backend refuses to start if any required variable is missing.
+
+3. **Seed the database** (run once)
    ```bash
    node backend/scripts/seed.js
    ```
+
+### Environment Variables
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `JWT_SECRET` | Yes | Secret used to sign admin JWTs. Generate with `node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"` |
+| `ADMIN_USERNAME` | Yes | Username for the admin login |
+| `ADMIN_PASSWORD_HASH` | Yes | bcrypt hash of the admin password. Generate with `node -e "import('bcryptjs').then(b => b.hash('your_password', 10).then(console.log))"` |
+| `PORT` | No | Backend port, defaults to `3000` |
+| `ALLOWED_ORIGIN` | No | CORS origin, defaults to `http://localhost:5173` |
+| `NODE_ENV` | No | `production` enables combined logging and skips auto schema sync |
+
+There are no built-in defaults for the secrets or the admin account.
 
 ### Development
 

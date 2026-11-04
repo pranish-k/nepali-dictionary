@@ -1,9 +1,7 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
-const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key-change-in-production";
-const ADMIN_USERNAME = process.env.ADMIN_USERNAME || "admin";
-const ADMIN_PASSWORD_HASH = process.env.ADMIN_PASSWORD_HASH || "$2a$10$YourHashHere";
+import { JWT_SECRET, ADMIN_USERNAME, ADMIN_PASSWORD_HASH } from "../config.js";
 
 // Login endpoint
 export async function login(req, res) {
